@@ -47,6 +47,8 @@ namespace Wox.ViewModel
 
         #endregion
 
+        public event EventHandler WindowChangedToVisible;
+
         #region Constructor
 
         public MainViewModel(Settings settings)
@@ -619,6 +621,7 @@ namespace Wox.ViewModel
             if (MainWindowVisibility != Visibility.Visible)
             {
                 MainWindowVisibility = Visibility.Visible;
+                WindowChangedToVisible?.Invoke(this, new EventArgs());
             }
             else
             {

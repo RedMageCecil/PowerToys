@@ -35,6 +35,7 @@ namespace Wox
             DataContext = mainVM;
             _viewModel = mainVM;
             _settings = settings;
+            _viewModel.WindowChangedToVisible += OnWindowChangedToVisible;
             InitializeComponent();
         }
         public MainWindow()
@@ -238,6 +239,12 @@ namespace Wox
         private void OnTextChanged(object sender, TextChangedEventArgs e)
         {
            
+        }
+
+        // Steal focus when the launcher prompt is visible again.
+        private void OnWindowChangedToVisible(object sender, EventArgs e)
+        {
+            Focus();
         }
     }
 }
